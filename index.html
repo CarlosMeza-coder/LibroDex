@@ -1,4 +1,4 @@
-<!doctype html>
+!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
@@ -15,6 +15,13 @@
       name="keywords"
       content="libros, autores, literatura, biblioteca, LibroDex, obras"
     />
+
+    <!-- SEO multidioma -->
+    <link rel="alternate" hreflang="es" href="https://ejemplo.com/es/" />
+    <link rel="alternate" hreflang="en" href="https://ejemplo.com/en/" />
+
+    <!-- Canonical: URL oficial para evitar duplicados -->
+    <link rel="canonical" href="https://www.tusitio.com/pagina" />
 
     <title>LibroDex | Catálogo de Autores</title>
   </head>
@@ -52,6 +59,8 @@
             escapar...
           </p>
         </article>
+
+        <!-- Imagen optimizada -->
         <picture>
           <source srcset="assets/img/Libro.webp" type="image/webp" />
           <img
@@ -63,11 +72,13 @@
           />
         </picture>
 
+        <!-- Audio -->
         <audio controls preload="metadata">
           <source src="assets/audios/Ambiente.mp3" type="audio/mpeg" />
           Tu navegador no soporta la reproducción de audio.
         </audio>
 
+        <!-- Video -->
         <video
           controls
           preload="metadata"
