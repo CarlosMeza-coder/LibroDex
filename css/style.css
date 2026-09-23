@@ -1,0 +1,19 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #f5f1e8;
+  color: #f72525;
+}
+
+#portada {
+  background-color: #3b2f2f;
+  color: #f5f1e8;
+}
+
+.destacado {
+  background-color: #645327;
+  color: aquamarine;
+}

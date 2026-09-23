@@ -1,4 +1,4 @@
-!doctype html>
+<!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
@@ -16,17 +16,16 @@
       content="libros, autores, literatura, biblioteca, LibroDex, obras"
     />
 
-    <!-- SEO multidioma -->
     <link rel="alternate" hreflang="es" href="https://ejemplo.com/es/" />
     <link rel="alternate" hreflang="en" href="https://ejemplo.com/en/" />
 
-    <!-- Canonical: URL oficial para evitar duplicados -->
     <link rel="canonical" href="https://www.tusitio.com/pagina" />
+    <link rel="stylesheet" href="css/style.css" />
 
     <title>LibroDex | Catálogo de Autores</title>
   </head>
   <body>
-    <header>
+    <header id="portada">
       <h1>LibroDex</h1>
       <nav aria-label="Navegación principal">
         <ul>
@@ -50,7 +49,7 @@
     <main>
       <section>
         <h2>Volumen Destacado</h2>
-        <article>
+        <article class="destacado">
           <h3><strong>El conde de Montecristo</strong></h3>
           <p><strong>Alexandre Dumas, 1844</strong></p>
           <p>
@@ -60,7 +59,6 @@
           </p>
         </article>
 
-        <!-- Imagen optimizada -->
         <picture>
           <source srcset="assets/img/Libro.webp" type="image/webp" />
           <img
@@ -72,13 +70,11 @@
           />
         </picture>
 
-        <!-- Audio -->
         <audio controls preload="metadata">
           <source src="assets/audios/Ambiente.mp3" type="audio/mpeg" />
           Tu navegador no soporta la reproducción de audio.
         </audio>
 
-        <!-- Video -->
         <video
           controls
           preload="metadata"
@@ -93,10 +89,10 @@
       <section>
         <h2>Recientes contribuciones</h2>
         <ul>
-          <li><strong>Moby-dick</strong></li>
-          <li><strong>IT</strong></li>
-          <li><strong>Después</strong></li>
-          <li><strong>La odisea</strong></li>
+          <li class="tarjeta"><strong>Moby-dick</strong></li>
+          <li class="tarjeta"><strong>IT</strong></li>
+          <li class="tarjeta"><strong>Después</strong></li>
+          <li class="tarjeta"><strong>La odisea</strong></li>
         </ul>
         <button>Buscar en todos los archivos</button>
       </section>
