@@ -1,19 +1,44 @@
+:root {
+  --font-heading: "Playfair Display", serif;
+  --font-body: system-ui, sans-serif;
+
+  --color-crema: #f7f3eb;
+  --color-marron: #2b1e17;
+  --color-negro: #1e1b18;
+  --color-verde: #2e4f3e;
+  --color-dorado: #c89b53;
+}
+
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  background-color: #f5f1e8;
-  color: #f72525;
+  background-color: var(--color-crema);
+  color: var(--color-marron);
+  font-family: var(--font-body);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading);
+  color: var(--color-negro);
 }
 
 #portada {
-  background-color: #3b2f2f;
-  color: #f5f1e8;
+  background-color: var(--color-marron);
+  color: var(--color-crema);
+}
+
+#portada h1,
+#portada h2 {
+  color: var(--color-crema);
 }
 
 .destacado {
-  background-color: #645327;
-  color: aquamarine;
+  background-color: var(--color-verde);
+  color: var(--color-dorado);
 }
