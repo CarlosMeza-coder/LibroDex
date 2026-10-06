@@ -1,104 +1,112 @@
 <!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Buscador interactivo de autores y su catálogo completo de obras literarias."
-    />
-    <meta
-      name="author"
-      content="Carlos Alonso Meza Meza mezaaaaaa y Sebastian Nuñez Marquez"
-    />
-    <meta
-      name="keywords"
-      content="libros, autores, literatura, biblioteca, LibroDex, obras"
-    />
-
-    <link rel="alternate" hreflang="es" href="https://ejemplo.com/es/" />
-    <link rel="alternate" hreflang="en" href="https://ejemplo.com/en/" />
-
-    <link rel="stylesheet" href="css/style.css" />
-
-    <title>LibroDex | Catálogo de Autores</title>
-  </head>
-  <body>
-    <header id="portada">
-      <h1>LibroDex</h1>
-      <nav aria-label="Navegación principal">
-        <ul>
-          <li><a href="generos.html">Géneros</a></li>
-          <li><a href="autores.html">Autores</a></li>
-          <li><a href="cronologia.html">Cronología</a></li>
-          <li><a href="aleatorio.html">Libro aleatorio</a></li>
-        </ul>
-      </nav>
-
-      <aside>
-        <h2>Accesos rápidos</h2>
-        <ul>
-          <li><a href="perfil.html">Perfil del Usuario</a></li>
-          <li><a href="favoritos.html">Favoritos</a></li>
-          <li><a href="historial.html">Historial</a></li>
-        </ul>
-      </aside>
-    </header>
-
-    <main>
-      <section>
-        <h2>Volumen Destacado</h2>
-        <article class="destacado">
-          <h3><strong>El conde de Montecristo</strong></h3>
-          <p><strong>Alexandre Dumas, 1844</strong></p>
-          <p>
-            Una historia de injusticia, paciencia y venganza. Edmond Dantès,
-            traicionado por sus amigos, pasa 14 años en prisión antes de
-            escapar...
-          </p>
-        </article>
-
-        <picture>
-          <source srcset="assets/img/Libro.webp" type="image/webp" />
-          <img
-            src="assets/img/Libro.jpg"
-            alt="Libro de Libros"
-            width="400"
-            height="250"
-            loading="lazy"
-          />
-        </picture>
-
-        <audio controls preload="metadata">
-          <source src="assets/audios/Ambiente.mp3" type="audio/mpeg" />
-          Tu navegador no soporta la reproducción de audio.
-        </audio>
-
-        <video
-          controls
-          preload="metadata"
-          poster="assets/img/Libro.webp"
-          width="480"
-        >
-          <source src="assets/videos/LibroLeer.mp4" type="video/mp4" />
-          Tu navegador no soporta la reproducción de video HTML5.
-        </video>
-      </section>
-
-      <section>
-        <h2>Recientes contribuciones</h2>
-        <ul>
-          <li class="tarjeta"><strong>Moby-dick</strong></li>
-          <li class="tarjeta"><strong>IT</strong></li>
-          <li class="tarjeta"><strong>Después</strong></li>
-          <li class="tarjeta"><strong>La odisea</strong></li>
-        </ul>
-        <button>Buscar en todos los archivos</button>
-      </section>
-    </main>
-
-    <footer>
-      <p>LibroDex Versión 1.0</p>
-    </footer>
-  </body>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta
+name="description"
+content="Buscador interactivo de autores y su catálogo completo de obras literarias."
+/>
+<meta
+name="author"
+content="Carlos Alonso Meza Meza mezaaaaaa y Sebastian Nuñez Marquez"
+/>
+<meta
+name="keywords"
+content="libros, autores, literatura, biblioteca, LibroDex, obras"
+/>
+ 
+<link rel="alternate" hreflang="es" href="https://ejemplo.com/es/" />
+<link rel="alternate" hreflang="en" href="https://ejemplo.com/en/" />
+ 
+css/style.css
+ 
+<title>LibroDex | Catálogo de Autores</title>
+</head>
+ 
+<body>
+<header id="portada">
+<h1>LibroDex</h1>
+ 
+<nav aria-label="Navegación principal">
+<ul>
+<li><a href="generos.html">Géneros</a></li>
+<li><a href="autores.html">Autores</a></li>
+<li><a href="cronologia.html">Cronología</a></li>
+<li><a href="aleatorio.html">Libro aleatorio</a></li>
+</ul>
+</nav>
+ 
+<aside>
+<h2>Accesos rápidos</h2>
+<ul>
+<li><a href="perfil.html">Perfil del Usuario</a></li>
+<li><a href="favoritos.html">Favoritos</a></li>
+<li><a href="historial.html">Historial</a></li>
+</ul>
+</aside>
+</header>
+ 
+<main>
+<section>
+<h2>Volumen Destacado</h2>
+ 
+<article class="libro-destacado">
+<h3><strong>El conde de Montecristo</strong></h3>
+<p><strong>Alexandre Dumas, 1844</strong></p>
+<p>
+Una historia de injusticia, paciencia y venganza. Edmond Dantès,
+traicionado por sus amigos, pasa 14 años en prisión antes de
+escapar...
+</p>
+</article>
+ 
+<picture>
+assets/img/Libro.webp
+<img
+src="assets/img/Libro.jpg"
+<audio controls preload="metadata">
+<source src="assets/audios/Ambiente.mp3" type="audio/mpegrta la reproducción de audio.
+</audio>
+ 
+<video
+controls
+preload="metadata"
+poster="assets/img/Libro.webp"
+width="480"
+>
+assets/videos/LibroLeer.mp4
+Tu navegador no soporta la reproducción de video HTML5.
+</video>
+</section>
+ 
+<section>
+<h2>Recientes contribuciones</h2>
+ 
+<ul>
+<li class="contribuciones__tarjeta">
+<strong>Moby-dick</strong>
+</li>
+ 
+<li class="contribuciones__tarjeta">
+<strong>IT</strong>
+</li>
+ 
+<li class="contribuciones__tarjeta">
+<strong>Después</strong>
+</li>
+ 
+<li class="contribuciones__tarjeta">
+<strong>La odisea</strong>
+</li>
+</ul>
+ 
+<button>Buscar en todos los archivos</button>
+</section>
+</main>
+ 
+<footer>
+<p>LibroDex Versión 1.0</p>
+</footer>
+</body>
 </html>
