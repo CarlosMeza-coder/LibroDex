@@ -88,12 +88,10 @@ button:hover {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
 }
 
-/* Pseudoelemento */
 .libro-destacado::before {
   content: "★ ";
   color: goldenrod;
 }
-/* Pseudoclase */
 .contribuciones__tarjeta:hover {
   background-color: #f0f8ff;
   cursor: pointer;
