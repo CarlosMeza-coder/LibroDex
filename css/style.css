@@ -377,3 +377,150 @@ button:hover {
 .hero h2 {
   font-size: 3rem;
 }
+
+:root {
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+
+  --container-width: 1280px;
+}
+
+body {
+  display: grid;
+  grid-template-areas:
+    "header"
+    "main"
+    "sidebar"
+    "footer";
+  grid-template-columns: 1fr;
+  min-height: 100vh;
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  font-family: var(--font-body);
+}
+
+#portada {
+  grid-area: header;
+}
+
+.sidebar {
+  grid-area: sidebar;
+}
+
+.contenido {
+  grid-area: main;
+  display: grid;
+  gap: var(--space-xl);
+  padding: var(--space-lg);
+}
+
+.pie {
+  grid-area: footer;
+}
+
+.autores__lista {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+}
+
+.autor-tarjeta article {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  height: 100%;
+  padding: var(--space-md);
+  text-align: center;
+}
+
+.contribuciones__lista {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+}
+
+@media (max-width: 390px) {
+  #portada {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-sm);
+  }
+
+  .navbar__lista {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .navbar__buscar input {
+    width: 100%;
+  }
+
+  .hero__buscador {
+    flex-direction: column;
+  }
+
+  .hero__buscador button {
+    width: 100%;
+    margin: 0;
+  }
+
+  .autores__encabezado {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .sidebar {
+    border-right: none;
+    border-top: 1px solid var(--color-borde);
+  }
+}
+
+@media (min-width: 820px) {
+  body {
+    grid-template-areas:
+      "header header"
+      "sidebar main"
+      "footer footer";
+    grid-template-columns: 220px 1fr;
+  }
+
+  .autores__lista {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .contribuciones__lista {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .navbar__lista {
+    flex-wrap: wrap;
+  }
+}
+
+@media (min-width: 1280px) {
+  .contenido {
+    width: 100%;
+    max-width: var(--container-width);
+    margin: 0 auto;
+  }
+
+  .autores__lista {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .contribuciones__lista {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .hero__texto {
+    max-width: 700px;
+  }
+}
