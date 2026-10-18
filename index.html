@@ -37,11 +37,19 @@
 
       <nav class="navbar__menu" aria-label="Navegación principal">
         <ul class="navbar__lista">
-          <li><a href="index.html" class="activo">Inicio</a></li>
-          <li><a href="generos.html">Géneros</a></li>
-          <li><a href="autores.html">Autores</a></li>
-          <li><a href="cronologia.html">Cronología</a></li>
-          <li><a href="aleatorio.html">Libro aleatorio</a></li>
+          <li>
+            <a href="index.html" class="navbar__enlace navbar__enlace--activo"
+              >Inicio</a
+            >
+          </li>
+          <li><a href="generos.html" class="navbar__enlace">Géneros</a></li>
+          <li><a href="autores.html" class="navbar__enlace">Autores</a></li>
+          <li>
+            <a href="cronologia.html" class="navbar__enlace">Cronología</a>
+          </li>
+          <li>
+            <a href="aleatorio.html" class="navbar__enlace">Libro aleatorio</a>
+          </li>
         </ul>
       </nav>
 
@@ -55,12 +63,18 @@
     </header>
 
     <aside class="sidebar" aria-labelledby="accesos-titulo">
-      <h2 id="accesos-titulo">Accesos rápidos</h2>
+      <h2 id="accesos-titulo" class="sidebar__titulo">Accesos rápidos</h2>
       <nav aria-label="Accesos rápidos">
-        <ul>
-          <li><a href="perfil.html">Perfil del Usuario</a></li>
-          <li><a href="favoritos.html">Favoritos</a></li>
-          <li><a href="historial.html">Historial</a></li>
+        <ul class="sidebar__lista">
+          <li>
+            <a href="perfil.html" class="sidebar__enlace">Perfil del Usuario</a>
+          </li>
+          <li>
+            <a href="favoritos.html" class="sidebar__enlace">Favoritos</a>
+          </li>
+          <li>
+            <a href="historial.html" class="sidebar__enlace">Historial</a>
+          </li>
         </ul>
       </nav>
     </aside>
@@ -84,22 +98,23 @@
         </form>
 
         <ul class="tendencias">
-          <li><a href="#">Alexandre Dumas</a></li>
-          <li><a href="#">Jane Austen</a></li>
-          <li><a href="#">Gabriel García Márquez</a></li>
-          <li><a href="#">Mary Shelley</a></li>
-        </ul>
-      </section>
+  <li><a href="#" class="tendencias__enlace">Alexandre Dumas</a></li>
+  <li><a href="#" class="tendencias__enlace">Jane Austen</a></li>
+  <li><a href="#" class="tendencias__enlace">Gabriel García Márquez</a></li>
+  <li><a href="#" class="tendencias__enlace">Mary Shelley</a></li>
+</ul>
 
       <section class="autores" aria-labelledby="autores-titulo">
-        <header class="autores__encabezado">
-          <div>
-            <p class="etiqueta">Genealogía de las letras</p>
-            <h2 id="autores-titulo">Autores destacados</h2>
-            <p>Explora los anaqueles y biografías canónicas del archivo.</p>
-          </div>
-          <a href="autores.html" class="enlace-ver">Ver todos los autores →</a>
-        </header>
+  <header class="autores__encabezado">
+    <div class="autores__titulos">
+      <p class="etiqueta">Genealogía de las letras</p>
+      <h2 id="autores-titulo">Autores destacados</h2>
+      <p>Explora los anaqueles y biografías canónicas del archivo.</p>
+    </div>
+    <a href="autores.html" class="autores__enlace"
+      >Ver todos los autores →</a
+    >
+  </header>
 
         <ul class="autores__lista">
           <li class="autor-tarjeta">
@@ -107,10 +122,11 @@
               <div class="autor-tarjeta__foto" aria-hidden="true">AD</div>
               <h3>Alexandre Dumas</h3>
               <p class="autor-tarjeta__datos">Francia · 1802–1870</p>
-              <p class="insignia">18 tomos archivados</p>
-              <div class="estanteria" aria-hidden="true">
-                <span class="lomo"></span><span class="lomo"></span
-                ><span class="lomo"></span>
+              <p class="autor-tarjeta__insignia">18 tomos archivados</p>
+              <div class="autor-tarjeta__estanteria" aria-hidden="true">
+                <span class="autor-tarjeta__lomo"></span
+                ><span class="autor-tarjeta__lomo"></span
+                ><span class="autor-tarjeta__lomo"></span>
               </div>
             </article>
           </li>
@@ -120,10 +136,11 @@
               <div class="autor-tarjeta__foto" aria-hidden="true">JA</div>
               <h3>Jane Austen</h3>
               <p class="autor-tarjeta__datos">Reino Unido · 1775–1817</p>
-              <p class="insignia">7 obras canónicas</p>
-              <div class="estanteria" aria-hidden="true">
-                <span class="lomo"></span><span class="lomo"></span
-                ><span class="lomo"></span>
+              <p class="autor-tarjeta__insignia">7 obras canónicas</p>
+              <div class="autor-tarjeta__estanteria" aria-hidden="true">
+                <span class="autor-tarjeta__lomo"></span
+                ><span class="autor-tarjeta__lomo"></span
+                ><span class="autor-tarjeta__lomo"></span>
               </div>
             </article>
           </li>
@@ -133,10 +150,11 @@
               <div class="autor-tarjeta__foto" aria-hidden="true">EP</div>
               <h3>Edgar Allan Poe</h3>
               <p class="autor-tarjeta__datos">Estados Unidos · 1809–1849</p>
-              <p class="insignia">14 cuentos y poemas</p>
-              <div class="estanteria" aria-hidden="true">
-                <span class="lomo"></span><span class="lomo"></span
-                ><span class="lomo"></span>
+              <p class="autor-tarjeta__insignia">14 cuentos y poemas</p>
+              <div class="autor-tarjeta__estanteria" aria-hidden="true">
+                <span class="autor-tarjeta__lomo"></span
+                ><span class="autor-tarjeta__lomo"></span
+                ><span class="autor-tarjeta__lomo"></span>
               </div>
             </article>
           </li>
@@ -146,10 +164,11 @@
               <div class="autor-tarjeta__foto" aria-hidden="true">MS</div>
               <h3>Mary Shelley</h3>
               <p class="autor-tarjeta__datos">Reino Unido · 1797–1851</p>
-              <p class="insignia">9 volúmenes</p>
-              <div class="estanteria" aria-hidden="true">
-                <span class="lomo"></span><span class="lomo"></span
-                ><span class="lomo"></span>
+              <p class="autor-tarjeta__insignia">9 volúmenes</p>
+              <div class="autor-tarjeta__estanteria" aria-hidden="true">
+                <span class="autor-tarjeta__lomo"></span
+                ><span class="autor-tarjeta__lomo"></span
+                ><span class="autor-tarjeta__lomo"></span>
               </div>
             </article>
           </li>
