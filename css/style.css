@@ -15,7 +15,6 @@
    13. Reduced motion
    ========================================================== */
 
-/* ========== 1. VARIABLES Y PALETA ========== */
 :root {
   --font-heading: "Playfair Display", serif;
   --font-body: system-ui, sans-serif;
@@ -72,6 +71,26 @@
     --color-sombra: rgba(0, 0, 0, 0.4);
     --color-sombra-fuerte: rgba(0, 0, 0, 0.5);
   }
+}
+
+/* Modo oscuro forzado por JavaScript */
+body.oscuro {
+  --color-fondo: #14110f;
+  --color-panel: #1e1b18;
+  --color-borde: #3a332c;
+  --color-titulo: #f7f3eb;
+  --color-texto: #cfc6b8;
+  --color-primario: #2e4f3e;
+  --color-sobre-primario: #f7f3eb;
+  --color-acento: #c89b53;
+  --color-acento-sobre-primario: #c89b53;
+  --color-estante: #0e0c0a;
+  --color-estante-borde: #2a231c;
+  --color-lomo-1: #8b1e1e;
+  --color-lomo-2: #2e4f3e;
+  --color-lomo-3: #a8742a;
+  --color-sombra: rgba(0, 0, 0, 0.4);
+  --color-sombra-fuerte: rgba(0, 0, 0, 0.5);
 }
 
 /* ========== 2. RESET Y BASE ========== */
@@ -153,10 +172,28 @@ body {
   padding: 14px 28px;
   background-color: var(--color-panel);
   border-bottom: 1px solid var(--color-borde);
+  flex-wrap: wrap; /* Añadido para que el menú baje en móviles */
 }
 
 .navbar__logo {
   font-size: 1.6rem;
+}
+
+#btnMenu,
+#btnTema {
+  padding: 6px 12px;
+  margin: 0;
+  font-size: 0.8rem;
+}
+
+.navbar__menu {
+  display: none;
+  width: 100%;
+}
+
+.navbar__menu.abierto {
+  display: block;
+  margin-top: var(--space-sm);
 }
 
 .navbar__lista {
@@ -547,8 +584,19 @@ button:focus-visible {
     grid-template-columns: 220px 1fr;
   }
 
+  #btnMenu {
+    display: none;
+  }
+
+  .navbar__menu {
+    display: block !important;
+    width: auto;
+    margin-top: 0;
+  }
+
   .navbar__lista {
     flex-wrap: wrap;
+    flex-direction: row;
   }
 
   .autores__lista,
