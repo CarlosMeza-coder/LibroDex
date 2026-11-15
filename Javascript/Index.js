@@ -1,7 +1,11 @@
+import { cargarAutores } from "./cargarAutores.js";
+
 const btnMenu = document.getElementById("btnMenu");
 const nav = document.getElementById("nav");
 const btnTema = document.getElementById("btnTema");
 const buscador = document.getElementById("buscador");
+
+cargarAutores();
 
 btnMenu.addEventListener("click", () => {
   nav.classList.toggle("abierto");

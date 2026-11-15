@@ -631,3 +631,8 @@ button:focus-visible {
     transition: none !important;
   }
 }
+
+.librodex-toast {
+  border: 1px solid #d4a359 !important;
+  font-family: "Playfair Display", Georgia, serif !important;
+}
