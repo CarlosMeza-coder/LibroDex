@@ -9,15 +9,12 @@
     />
     <meta
       name="author"
-      content="Carlos Alonso Meza Meza mezaaaaaa y Sebastian Nuñez Marquez"
+      content="Carlos Alonso Meza Meza y Sebastian Nuñez Marquez"
     />
     <meta
       name="keywords"
       content="libros, autores, literatura, biblioteca, LibroDex, obras"
     />
-
-    <link rel="alternate" hreflang="es" href="https://ejemplo.com/es/" />
-    <link rel="alternate" hreflang="en" href="https://ejemplo.com/en/" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -122,6 +119,63 @@
             >
           </header>
 
+          <form
+            id="formNuevoAutor"
+            class="registro-panel"
+            style="margin-bottom: 2rem"
+            novalidate
+          >
+            <h3>Archivar nuevo autor</h3>
+
+            <div class="form-grupo">
+              <label for="autor-nombre">NOMBRE COMPLETO</label>
+              <input
+                type="text"
+                id="autor-nombre"
+                name="nombre"
+                placeholder="Ej. Julio Cortázar"
+                required
+              />
+            </div>
+
+            <div class="form-grupo">
+              <label for="autor-iniciales">INICIALES (OPCIONAL)</label>
+              <input
+                type="text"
+                id="autor-iniciales"
+                name="iniciales"
+                maxlength="4"
+                placeholder="Ej. JC"
+              />
+            </div>
+
+            <div class="form-grupo">
+              <label for="autor-datos">PAÍS Y ÉPOCA</label>
+              <input
+                type="text"
+                id="autor-datos"
+                name="datos"
+                placeholder="Ej. Argentina · 1914–1984"
+                required
+              />
+            </div>
+
+            <div class="form-grupo">
+              <label for="autor-insignia">INSIGNIA DE OBRA</label>
+              <input
+                type="text"
+                id="autor-insignia"
+                name="insignia"
+                placeholder="Ej. 22 novelas y relatos"
+                required
+              />
+            </div>
+
+            <p id="mensajeFormAutor" role="status" aria-live="polite"></p>
+
+            <button type="submit">ARCHIVAR AUTOR →</button>
+          </form>
+
           <ul id="listaAutores" class="autores__lista"></ul>
         </section>
 
@@ -144,6 +198,6 @@
       <p>LibroDex Versión 1.0</p>
     </footer>
 
-    <script type="module" src="JavaScript/Index.js"></script>
+    <script type="module" src="Javascript/Index.js"></script>
   </body>
 </html>

@@ -1,4 +1,4 @@
-import Swal from "../node_modules/sweetalert2/dist/sweetalert2.esm.all.js";
+import Swal from "https://cdn.jsdelivr.net/npm/sweetalert2@11/+esm";
 
 export function mostrarAvisoFavorito(nombreAutor, fueAgregado) {
   const esOscuro = document.body.classList.contains("oscuro");
