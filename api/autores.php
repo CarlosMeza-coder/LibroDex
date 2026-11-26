@@ -1,87 +1,125 @@
 <?php
 require __DIR__ . '/helpers.php';
+require __DIR__ . '/db.php';
 
-$base = require __DIR__ . '/data/autores.php';
-$archivoNuevos = __DIR__ . '/data/autores_nuevos.json';
+function validarAutor(array $entrada): array
+{
+    $nombre    = trim($entrada['nombre'] ?? '');
+    $iniciales = strtoupper(trim($entrada['iniciales'] ?? ''));
+    $datos     = trim($entrada['datos'] ?? '');
+    $insignia  = trim($entrada['insignia'] ?? '');
 
-$nuevos = [];
-if (file_exists($archivoNuevos)) {
-    $contenido = json_decode(file_get_contents($archivoNuevos), true);
-    if (is_array($contenido)) {
-        $nuevos = $contenido;
+    if ($nombre === '' || $datos === '' || $insignia === '' || mb_strlen($nombre) < 3) {
+        responder(['error' => 'Datos inválidos: nombre (mínimo 3 caracteres), datos e insignia son obligatorios'], 422);
     }
+
+    if ($iniciales === '') {
+        $palabras = preg_split('/\s+/', $nombre);
+        foreach (array_slice($palabras, 0, 3) as $p) {
+            $iniciales .= mb_strtoupper(mb_substr($p, 0, 1));
+        }
+    } elseif (mb_strlen($iniciales) < 2 || mb_strlen($iniciales) > 4) {
+        responder(['error' => 'Las iniciales deben tener entre 2 y 4 caracteres'], 422);
+    }
+
+    return [$iniciales, $nombre, $datos, $insignia];
 }
 
-$autores = array_merge($base, $nuevos);
-$metodo = $_SERVER['REQUEST_METHOD'];
+try {
+    $pdo    = conectar();
+    $metodo = $_SERVER['REQUEST_METHOD'];
+    $id     = isset($_GET['id']) ? (int) $_GET['id'] : null;
 
-switch ($metodo) {
-    case 'GET':
-        if (isset($_GET['id'])) {
-            $id = (int) $_GET['id'];
-            foreach ($autores as $autor) {
-                if ($autor['id'] === $id) {
-                    responder($autor, 200);
+    switch ($metodo) {
+        case 'GET':
+            if ($id !== null) {
+                $stmt = $pdo->prepare('SELECT id_autor AS id, iniciales, nombre, datos, insignia FROM autores WHERE id_autor = :id');
+                $stmt->execute(['id' => $id]);
+                $autor = $stmt->fetch();
+
+                if (!$autor) {
+                    responder(['error' => 'No se encontró el autor'], 404);
                 }
+                responder($autor, 200);
             }
-            responder(['error' => "No se encontró el autor con id $id"], 404);
-        }
 
-        responder($autores, 200);
+            $buscar = trim($_GET['buscar'] ?? '');
+            $stmt = $pdo->prepare(
+                'SELECT id_autor AS id, iniciales, nombre, datos, insignia FROM autores WHERE nombre LIKE :buscar ORDER BY id_autor'
+            );
+            $stmt->execute(['buscar' => "%$buscar%"]);
+            responder($stmt->fetchAll(), 200);
 
-    case 'POST':
-        $entrada = leerJson();
+        case 'POST':
+            [$iniciales, $nombre, $datos, $insignia] = validarAutor(leerJson());
 
-        $nombre    = trim($entrada['nombre'] ?? '');
-        $iniciales = strtoupper(trim($entrada['iniciales'] ?? ''));
-        $datos     = trim($entrada['datos'] ?? '');
-        $insignia  = trim($entrada['insignia'] ?? '');
+            $stmt = $pdo->prepare(
+                'INSERT INTO autores (iniciales, nombre, datos, insignia) VALUES (:iniciales, :nombre, :datos, :insignia)'
+            );
+            $stmt->execute([
+                'iniciales' => $iniciales,
+                'nombre'    => $nombre,
+                'datos'     => $datos,
+                'insignia'  => $insignia,
+            ]);
 
-        if ($nombre === '' || $datos === '' || $insignia === '') {
-            responder(['error' => 'Los campos nombre, datos e insignia son obligatorios.'], 422);
-        }
+            responder([
+                'id'        => (int) $pdo->lastInsertId(),
+                'iniciales' => $iniciales,
+                'nombre'    => $nombre,
+                'datos'     => $datos,
+                'insignia'  => $insignia,
+            ], 201);
 
-        if (mb_strlen($nombre) < 3) {
-            responder(['error' => 'El nombre del autor debe tener al menos 3 caracteres.'], 422);
-        }
-
-        if ($iniciales === '') {
-            $palabras = preg_split('/\s+/', $nombre);
-            foreach (array_slice($palabras, 0, 3) as $p) {
-                $iniciales .= mb_strtoupper(mb_substr($p, 0, 1));
+        case 'PUT':
+            if ($id === null) {
+                responder(['error' => 'Falta el id'], 400);
             }
-        } elseif (mb_strlen($iniciales) < 2 || mb_strlen($iniciales) > 4) {
-            responder(['error' => 'Las iniciales deben tener entre 2 y 4 caracteres.'], 422);
-        }
+            [$iniciales, $nombre, $datos, $insignia] = validarAutor(leerJson());
 
-        $ultimoId = 0;
-        foreach ($autores as $a) {
-            if ($a['id'] > $ultimoId) {
-                $ultimoId = $a['id'];
+            $existe = $pdo->prepare('SELECT id_autor FROM autores WHERE id_autor = :id');
+            $existe->execute(['id' => $id]);
+            if (!$existe->fetch()) {
+                responder(['error' => 'No se encontró el autor'], 404);
             }
-        }
 
-        $nuevoAutor = [
-            'id'        => $ultimoId + 1,
-            'iniciales' => $iniciales,
-            'nombre'    => $nombre,
-            'datos'     => $datos,
-            'insignia'  => $insignia,
-        ];
+            $stmt = $pdo->prepare(
+                'UPDATE autores SET iniciales = :iniciales, nombre = :nombre, datos = :datos, insignia = :insignia WHERE id_autor = :id'
+            );
+            $stmt->execute([
+                'iniciales' => $iniciales,
+                'nombre'    => $nombre,
+                'datos'     => $datos,
+                'insignia'  => $insignia,
+                'id'        => $id,
+            ]);
 
-        $nuevos[] = $nuevoAutor;
-        $guardado = file_put_contents(
-            $archivoNuevos,
-            json_encode($nuevos, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT),
-            LOCK_EX
-        );
+            responder([
+                'id'        => $id,
+                'iniciales' => $iniciales,
+                'nombre'    => $nombre,
+                'datos'     => $datos,
+                'insignia'  => $insignia,
+            ], 200);
 
-        if ($guardado === false) {
-            responder(['error' => 'No se pudo guardar el autor en el servidor.'], 500);
-        }
+        case 'DELETE':
+            if ($id === null) {
+                responder(['error' => 'Falta el id'], 400);
+            }
 
-        responder($nuevoAutor, 201);
+            $stmt = $pdo->prepare('DELETE FROM autores WHERE id_autor = :id');
+            $stmt->execute(['id' => $id]);
 
-    default:
-        responder(['error' => 'Método no permitido'], 405);
+            if ($stmt->rowCount() === 0) {
+                responder(['error' => 'No se encontró el autor'], 404);
+            }
+
+            http_response_code(204);
+            exit;
+
+        default:
+            responder(['error' => 'Método no permitido'], 405);
+    }
+} catch (PDOException $e) {
+   responder(['error' => 'Error interno del servidor'], 500);
 }
